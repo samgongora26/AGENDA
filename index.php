@@ -231,17 +231,29 @@
                                             <div class="tdl-holder">
                                                 <div class="tdl-content">
                                                     <ul id="todo_list">
-                                                        <li><label><input type="checkbox"><i></i><span>Introduccion</span><a href='#' class="ti-trash"></a></label></li>
-                                                        <li><label><input type="checkbox" checked><i></i><span>Marco teorico</span><a href='#' class="ti-trash"></a></label></li>
-                                                        <li><label><input type="checkbox"><i></i><span>PCB de circuito</span><a href='#' class="ti-trash"></a></label></li>
-                                                        <li><label><input type="checkbox" checked><i></i><span>Interfaz del proyecto</span><a href='#' class="ti-trash"></a></label></li>
-                                                    </ul>
+                                                        <?php
+                                                            $result = mysqli_query($link, "select * from to_do");
+                                                            $total = mysqli_num_rows($result);
+                                                            $cont = 0;
+                                                            while($row=mysqli_fetch_array($result)){
+                                                                $cont = $cont + 1;
+                                                                echo '
+                                                                    <li>
+                                                                        <label><input type="checkbox"><i></i>
+                                                                        <span>'.$row["tarea"].'</span>
+                                                                        <a class="fa fa-trash" onClick=eliminar_evento('.$row["id_evento"].')></a></label>
+                                                                    </li>
+                                                            ';
+                                                            }
+                                                        ?>
+                                                        </ul>
                                                 </div>
                                                 <div class="px-4">
-                                                    <input type="text" class="form-control input-rounded" placeholder="agregar tarea">
-                                                    <br>
-                                                    <button type="button" class="btn mb-1 btn-success btn-sm">Guardar </button>
-
+                                                    <form name="form_todo" id="todo">
+                                                        <input type="text" class="form-control input-rounded" placeholder="agregar tarea">
+                                                        <br>
+                                                        <button type="button" onClick="nueva_tarea()" class="btn mb-1 btn-success btn-sm">Guardar </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

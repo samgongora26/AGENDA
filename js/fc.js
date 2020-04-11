@@ -84,6 +84,31 @@ function marcar_evento(id){
       }
   }
 
+  //---------------ELIMINAR EVENTO
+
+  function eliminar_evento(id){
+    var id
+    //alert("id " +id);
+    var url = "./resumen/eliminar_evento.php?id=" + id;
+    miPeticion.open("GET", url, true);
+    miPeticion.onreadystatechange=respuestaAjax2;
+    miPeticion.send(null);
+    //setTimeout('llamarAjax()', 1000);
+    }
+    
+    function respuestaAjax2() {
+    if(miPeticion.readyState == 1) {
+      document.getElementById("recarga").innerHTML="<center>Loading...</center>";
+    }
+    else if(miPeticion.readyState == 4) {
+    if(miPeticion.status == 200) {
+     var mitexto=miPeticion.responseText;
+     document.getElementById("recarga").innerHTML=mitexto;
+            } else {
+        alert("Ha ocurrido un error: " + miPeticion.statusText);
+            }
+        }
+    }
 
 
 
