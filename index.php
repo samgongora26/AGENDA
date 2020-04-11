@@ -229,8 +229,8 @@
                                         <h4 class="card-title px-4 mb-3">Por hacer</h4>
                                         <div class="todo-list">
                                             <div class="tdl-holder">
-                                                <div class="tdl-content">
-                                                    <ul id="todo_list">
+                                                <div class="" id="todo_list">
+                                                    <ul >
                                                         <?php
                                                             $result = mysqli_query($link, "select * from to_do");
                                                             $total = mysqli_num_rows($result);
@@ -239,20 +239,22 @@
                                                                 $cont = $cont + 1;
                                                                 echo '
                                                                     <li>
-                                                                        <label><input type="checkbox"><i></i>
-                                                                        <span>'.$row["tarea"].'</span>
-                                                                        <a class="fa fa-trash" onClick=eliminar_evento('.$row["id_evento"].')></a></label>
+                                                                        <label>
+                                                                            <input type="checkbox" onClick=marcar_tarea('.$row["id_tarea"].')><i></i>
+                                                                            <span>'.$row["tarea"].'</span>
+                                                                            <!--a class="fa fa-trash" onclick="eliminar_tarea('.$row["id_tarea"].')"></a-->
+                                                                        </label>
                                                                     </li>
                                                             ';
                                                             }
                                                         ?>
-                                                        </ul>
+                                                    </ul>
                                                 </div>
                                                 <div class="px-4">
                                                     <form name="form_todo" id="todo">
-                                                        <input type="text" class="form-control input-rounded" placeholder="agregar tarea">
+                                                        <input type="text" id="tarea" class="form-control input-rounded" placeholder="agregar tarea">
                                                         <br>
-                                                        <button type="button" onClick="nueva_tarea()" class="btn mb-1 btn-success btn-sm">Guardar </button>
+                                                        <button type="button" onClick="guardar_tarea()" class="btn mb-1 btn-success btn-sm">Guardar</button>
                                                     </form>
                                                 </div>
                                             </div>

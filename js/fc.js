@@ -1,26 +1,19 @@
-function getXMLHTTPRequest()
-{
+function getXMLHTTPRequest(){
 var req = false;
-try
-  {
+try{
     req = new XMLHttpRequest(); /* p.e. Firefox */
   }
-catch(err1)
-  {
-  try
-    {
+catch(err1){
+  try{
      req = new ActiveXObject("Msxml2.XMLHTTP");
   /* algunas versiones IE */
     }
-  catch(err2)
-    {
-    try
-      {
+  catch(err2){
+    try{
        req = new ActiveXObject("Microsoft.XMLHTTP");
   /* algunas versiones IE */
       }
-      catch(err3)
-        {
+      catch(err3){
          req = false;
         }
     }
@@ -30,7 +23,7 @@ return req;
 
 var miPeticion = getXMLHTTPRequest();
 
-
+//------------------------------------EVENTOS INICIO--------------------------
 function crear_evento(){
 var titulo = document.form_evento.titulo.value;
 var descripcion = document.form_evento.descripcion.value;
@@ -110,6 +103,78 @@ function marcar_evento(id){
         }
     }
 
+//-------------------------------EVENTOS FINAL----------------------------------
 
+//-------------------------------LISTA DE TAREAS-------------------------------
 
+//-----------ELIMINAR TAREA------------------
+function eliminar_tarea(id){
+  var id;
+  alert("id " +id);
+  var url = "./resumen/eliminar_tarea.php?id=" + id;
+  miPeticion.open("GET", url, true);
+  miPeticion.onreadystatechange=respuesta_eliminar_tarea;
+  miPeticion.send(null);
+}
 
+function respuesta_eliminar_tarea(){
+  if(miPeticion.readyState == 1) {
+    document.getElementById("todo_list").innerHTML="<center>Loading...</center>";
+  }
+  else if(miPeticion.readyState == 4) {
+  if(miPeticion.status == 200) {
+   var mitexto=miPeticion.responseText;
+   document.getElementById("todo_list").innerHTML=mitexto;
+          } else {
+            alert("Ha ocurrido un error: " + miPeticion.statusText);
+          }
+  }
+}
+
+//--------------MARCAR TAREA
+function marcar_tarea(id){
+  var id;
+  alert("id " +id);
+  var url = "./resumen/marcar_tarea.php?id=" + id;
+  miPeticion.open("GET", url, true);
+  miPeticion.onreadystatechange=respuesta_eliminar_tarea;
+  miPeticion.send(null);
+}
+
+function respuesta_marcar_tarea(){
+  if(miPeticion.readyState == 1) {
+    document.getElementById("todo_list").innerHTML="<center>Loading...</center>";
+  }
+  else if(miPeticion.readyState == 4) {
+  if(miPeticion.status == 200) {
+   var mitexto=miPeticion.responseText;
+   document.getElementById("todo_list").innerHTML=mitexto;
+          } else {
+            alert("Ha ocurrido un error: " + miPeticion.statusText);
+          }
+  }
+}
+
+//----------------GUARDAR TAREA
+function guardar_tarea(){
+  var tarea = document.form_todo.tarea.value;
+  alert("tarea " +tarea);
+  var url = "./resumen/guardar_tarea.php?tarea=" + tarea;
+  miPeticion.open("GET", url, true);
+  miPeticion.onreadystatechange=respuesta_eliminar_tarea;
+  miPeticion.send(null);
+}
+
+function respuesta_marcar_tarea(){
+  if(miPeticion.readyState == 1) {
+    document.getElementById("todo_list").innerHTML="<center>Loading...</center>";
+  }
+  else if(miPeticion.readyState == 4) {
+  if(miPeticion.status == 200) {
+   var mitexto=miPeticion.responseText;
+   document.getElementById("todo_list").innerHTML=mitexto;
+          } else {
+            alert("Ha ocurrido un error: " + miPeticion.statusText);
+          }
+  }
+}
