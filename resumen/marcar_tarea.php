@@ -1,17 +1,28 @@
 <?php
-    $tarea = $_GET["tarea"];
-    //echo $tarea;
-    include("../php/conexion.php");
-    $link = conectarse();
-    mysqli_query($link, "INSERT INTO `to_do`(`tarea`, `id_usuario`, `estado`) VALUES  ('$tarea', 1, 0)");
-?> 
+$id = $_GET["id"];
+
+include("../php/conexion.php");
+$link = conectarse();
+
+$resulta = mysqli_query($link, "SELECT * FROM to_do WHERE id_tarea = $id");
+$row=mysqli_fetch_array($resulta);
+
+if( $row["estado"]== 0){ //cambia el estado a marcado
+    mysqli_query($link, "UPDATE `to_do` SET `estado` = 1 WHERE id_tarea = $id");
+}
+if( $row["estado"]== 1) {       //quita el estado de marcado
+    mysqli_query($link, "UPDATE `to_do` SET `estado` = 0 WHERE id_tarea = $id");
+}
+
+?>
+
 <ul >
                                                         <?php
                                                             $result = mysqli_query($link, "select * from to_do");
                                                             $total = mysqli_num_rows($result);
-                                                           
+                                                            
                                                             while($row=mysqli_fetch_array($result)){
-                                                              
+                                                            
                                                                 if($row["estado"]  == 0){
                                                                 echo '
                                                                     <li>

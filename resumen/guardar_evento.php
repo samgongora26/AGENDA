@@ -52,7 +52,6 @@ VALUES ($materia,'$titulo','$descripcion','$fecha','$color',1,0)");
                                                             <button type="button"  onClick=eliminar_evento('.$row["id_evento"].') class="btn mb-1 btn-danger btn-sm">Remove <span class="btn-icon-right"><i class="fa fa-close"></i></span>
                                                             </button>
                                                         </div>
-                                                            
                                                     </div>
                                                 ';
                                             }

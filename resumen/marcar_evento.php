@@ -4,7 +4,7 @@ $id = $_GET["id"];
 include("../php/conexion.php");
 $link = conectarse();
 
-$resulta = mysqli_query($link, "select * from eventos where id_evento = $id");
+$resulta = mysqli_query($link, "SELECT * FROM eventos WHERE id_evento = $id");
 $row=mysqli_fetch_array($resulta);
 
 if( $row["estado"]== 0){ //cambia el estado a marcado

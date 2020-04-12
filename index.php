@@ -190,7 +190,7 @@
                                                 $cont = $cont + 1; //Este contador permite que los eventos se desplieguen y se reduzcan
                                                 echo '
                                                     <div class="card">';
-                                                        if($row["estado"] == 1){ //si el evento ha sido marcado entonces se marca y se pone gris
+                                                        if($row["estado"] == 1){ //si el evento ha sido marcado entonces se marca con una raya y se pone gris
                                                             echo '
                                                         <div class="card-header" style="background: rgb(84,84,84)" >
                                                             <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne'.$cont.'" aria-expanded="false" aria-controls="collapseOne4"><i class="fa" aria-hidden="true"></i><del> '.$row["titulo"].'  ---     fecha: '.$row["fecha"].' ¡HECHO!</del></h5>
@@ -205,9 +205,9 @@
                                                         echo'
                                                         <div id="collapseOne'.$cont.'" class="collapse show" data-parent="#accordion-three">
                                                             <div class="card-body">'.$row["descripcion"].'</div>
-                                                            <button type="button" onClick=marcar_evento('.$row["id_evento"].') class="btn mb-1 btn-success btn-sm">Seccess <span class="btn-icon-right"><i class="fa fa-check"></i></span>
+                                                            <button type="button" onClick=marcar_evento('.$row["id_evento"].') class="btn mb-1 btn-success btn-sm">Marcar <span class="btn-icon-right"><i class="fa fa-check"></i></span>
                                                             </button>
-                                                            <button type="button" onClick=eliminar_evento('.$row["id_evento"].') class="btn mb-1 btn-danger btn-sm">Remove <span class="btn-icon-right"><i class="fa fa-close"></i></span>
+                                                            <button type="button" onClick=eliminar_evento('.$row["id_evento"].') class="btn mb-1 btn-danger btn-sm">Eliminar <span class="btn-icon-right"><i class="fa fa-close"></i></span>
                                                             </button>
                                                         </div>
                                                             
@@ -227,6 +227,7 @@
                                 <div class="card">
                                     <div class="card-body px-0">
                                         <h4 class="card-title px-4 mb-3">Por hacer</h4>
+                                        <h5 class="card-subtitle px-4 mb-6">para marcar dar clic sobre la tarea</h5>
                                         <div class="todo-list">
                                             <div class="tdl-holder">
                                                 <div class="" id="todo_list">
@@ -234,28 +235,40 @@
                                                         <?php
                                                             $result = mysqli_query($link, "select * from to_do");
                                                             $total = mysqli_num_rows($result);
-                                                            $cont = 0;
+                                                            
                                                             while($row=mysqli_fetch_array($result)){
-                                                                $cont = $cont + 1;
+                                                            
+                                                                if($row["estado"]  == 0){
                                                                 echo '
                                                                     <li>
                                                                         <label>
-                                                                            <input type="checkbox" onClick=marcar_tarea('.$row["id_tarea"].')><i></i>
-                                                                            <span>'.$row["tarea"].'</span>
-                                                                            <!--a class="fa fa-trash" onclick="eliminar_tarea('.$row["id_tarea"].')"></a-->
+                                                                            <span onclick="marcar_tarea('.$row["id_tarea"].')">'.$row["tarea"].'</span>
+                                                                            <a class="fa fa-trash" onclick="eliminar_tarea('.$row["id_tarea"].')"></a>
                                                                         </label>
                                                                     </li>
-                                                            ';
+                                                                ';
+                                                                }
+                                                                if($row["estado"]  == 1){
+                                                                    echo '
+                                                                        <li>
+                                                                            <label style="background: rgb(171,171,171)">
+                                                                                <span style="color: #fff" onclick="marcar_tarea('.$row["id_tarea"].')"><del>'.$row["tarea"].'</del></span>
+                                                                                <a class="fa fa-trash" onclick="eliminar_tarea('.$row["id_tarea"].')"></a>
+                                                                            </label>
+                                                                        </li>
+                                                                    ';
+                                                                    }
+
                                                             }
                                                         ?>
                                                     </ul>
                                                 </div>
                                                 <div class="px-4">
-                                                    <form name="form_todo" id="todo">
+                                                    
                                                         <input type="text" id="tarea" class="form-control input-rounded" placeholder="agregar tarea">
                                                         <br>
                                                         <button type="button" onClick="guardar_tarea()" class="btn mb-1 btn-success btn-sm">Guardar</button>
-                                                    </form>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -642,7 +655,8 @@
     ***********************************-->
 
     <script src="js/nav.js"></script>
-    <script src="js/fc.js"></script>                                        
+    <script src="js/fc.js"></script> 
+    <script src="js/tareas.js"></script>                                        
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>

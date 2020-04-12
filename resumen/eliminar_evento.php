@@ -1,6 +1,5 @@
 <?php
 $id = $_GET["id"];
-echo $id;
 
 include("../php/conexion.php");
 $link = conectarse();
