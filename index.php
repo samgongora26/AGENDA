@@ -489,40 +489,7 @@
 
                 <div style="display: none;" id="calificaciones">
                         <div class="row">
-                                <div class="col-lg-8">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Agregar materia</h4>
-                                                <div class="basic-form">
-                                                    <form>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">Nombre materia</label>
-                                                            <div class="col-sm-10">
-                                                                <input type="text" class="form-control" placeholder="Nombre(s)">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">Maestro(a)</label>
-                                                                <div class="col-sm-10">
-                                                                   <select id="inputState" class="form-control">
-                                                                    <option selected="selected">Elija...</option>
-                                                                    <option>Option 1</option>
-                                                                    <option>Option 2</option>
-                                                                    <option>Option 3</option>
-                                                                </select> 
-                                                                </div>    
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-10">
-                                                                <button type="submit" class="btn btn-dark">Agregar</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                            </div>
-                            
+                                
                             <div class="col-lg-2">
                                         <div class="card">
                                             <div class="card-body">
@@ -600,6 +567,102 @@
                                 
                         </div>
                 </div>    
+
+                <div style="display: none;" class="row" id= "materia">
+                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Agregar materia</h4>
+                                                <div class="basic-form">
+                                                    <form>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Nombre materia</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" placeholder="Nombre(s)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Maestro</label>
+                                                            <div class="col-sm-10">
+                                                                <select id="inputState"   name="materia" class="form-control">
+                                                                    
+                                                                    <?php
+                                                                        $result = mysqli_query($link, "select * from maestros");
+                                                                        $total = mysqli_num_rows($result);
+                                                                        
+                                                                        while($row=mysqli_fetch_array($result)){
+                                                                            echo '<option value="'.$row["id_maestro"].'">'.$row["nombre"].' '.$row["apellido"].'
+                                                                                </option>';
+                                                                        }
+                                                                    ?>   
+                                                                </select>
+                                                            </div>   
+                                                        </div>
+                                                        <div class="form-group row">
+                                                                
+                                                                <label class="col-sm-2 col-form-label">Color</label>
+                                                                    <input type="text" name="color" class="colorpicker form-control" value="rgb(65, 184, 237)" >
+                                                                
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-10">
+                                                                <button type="submit" class="btn btn-success">Agregar</button>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">MATERIAS</h4>
+                                                    <div class="table-responsive"> 
+                                                        <table class="table table-bordered table-striped verticle-middle">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">Materia</th>
+                                                                    <th scope="col">Maestro</th>
+                                                                    
+                                                                    <th scope="col">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                        $result = mysqli_query($link, "SELECT asignaturas.nombre as nombre_materia, maestros.nombre as nombre_maestro FROM asignaturas, maestros WHERE asignaturas.id_maestro = maestros.id_maestro");
+                                                                        $total = mysqli_num_rows($result);
+                                                                        
+                                                                        while($row=mysqli_fetch_array($result)){
+                                                                            echo '
+                                                                            <tr>
+                                                                                <td>'.$row["nombre_materia"].'</td>
+                                                                                <td>'.$row["nombre_maestro"].'</td> 
+                                                                                <td>
+                                                                                    <span>
+                                                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                                                            <i class="fa fa-pencil color-muted m-r-5"></i>
+                                                                                        </a>
+                                                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Close">
+                                                                                            <i class="fa fa-close color-danger"></i>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                                ';
+                                                                        }
+                                                                ?> 
+                                                                
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                            
+                </div>
                 
 
                     <!--+++++++++++++++++++ PERFIL++++++++++++++++++++++++++-->
