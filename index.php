@@ -326,34 +326,100 @@
                                                    
                                                 </div>
                                             </div>';
+
+                                            echo   '
+                                            <div class="modal fade" id="exampleModal'.$row["id_maestro"].'editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Editar maestro: '.$row["nombre"].'</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form name="f_editar_materia" method = "GET">
+                                                                <div class="form-group">
+                                                                    <label for="recipient-name" class="col-form-label">Nombre de la materia:</label>
+                                                                    <input type="text" name="nuevo_nombre" value="'.$row["nombre"].'" class="form-control" id="nueva_materia'.$row["id_maestro"].'" placeholder="'.$row["nombre"].'">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="recipient-name" class="col-form-label">Maestro:</label>
+                                                                    <select id="nuevo_maestro'.$row["id_maestro"].'" name="nuevo_maestro" class="form-control">
+                                                                    ';
+                                                                        $result_m = mysqli_query($link, "select * from asignaturas");
+                                                                        $total_m = mysqli_num_rows($result_m);
+                                                                        
+                                                                        while($row_m=mysqli_fetch_array($result_m)){
+                                                                            echo '<option value="'.$row_m["id_materia"].'">'.$row_m["nombre"].' '.$row_m["apellido"].'
+                                                                                </option>';
+                                                                        }
+                                                                    echo'  
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 col-form-label">Color</label>
+                                                                    <input type="text" name="nuevo_color" id="nuevo_color'.$row["id_maestro"].'" class="colorpicker form-control" value="rgb(65, 184, 237)" >
+                                                                </div>
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button"  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                                            <button type="button" onClick=editar_materia('.$row["id_maestro"].') data-dismiss="modal" class="btn btn-success">Enviar</button>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                                            //----------------------------MODAL DE ELIMINAR
+                                            echo   '
+                                            <div class="modal fade" id="exampleModal'.$row["id_maestro"].'eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar maestro: '.$row["nombre"].'</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <label for="recipient-name" class="col-form-label">¿Seguro que desea eliminar la materia?</label>
+                                                                    
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                                            <button type="button" onClick=eliminar_materia('.$row["id_maestro"].') data-dismiss="modal"  class="btn btn-danger">Sí</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
                                     }
                                 ?>
                         
-                           
-                                    
-                                    
                                     <div class="col-lg-6">
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <h4 class="card-title">Agregar maestro(a)</h4>
                                                         <div class="basic-form">
-                                                            <form>
+                                                            <form method="GET" novalidate enctype="multipart/form-data">
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-2 col-form-label">Nombre(s)</label>
                                                                     <div class="col-sm-10">
-                                                                        <input type="text" class="form-control" placeholder="Nombre(s)">
+                                                                        <input type="text" name="nombre_maestro" class="form-control" placeholder="Nombre(s)">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-2 col-form-label">Apellido(s)</label>
                                                                     <div class="col-sm-10">
-                                                                        <input type="text" class="form-control" placeholder="Apellido(s)">
+                                                                        <input type="text" name="apellido_maestro" class="form-control" placeholder="Apellido(s)">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                         <label class="col-sm-2 col-form-label">Asignatura</label>
                                                                         <div class="col-sm-10">
-                                                                        <select id="inputState" class="form-control">
+                                                                        <select id="inputState" name="asignatura_maestro" class="form-control">
                                                                             <?php
                                                                             $result = mysqli_query($link, "select * from asignaturas");
                                                                             $total = mysqli_num_rows($result);
@@ -370,13 +436,13 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-2 col-form-label">Foto</label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="file" class="form-control-file">
+                                                                            <input type="file"  name="foto_maestro" class="form-control-file">
                                                                         </div>
                                                                     </div>
                                                                 
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-10">
-                                                                        <button type="submit" class="btn btn-dark">Agregar</button>
+                                                                        <button type="button" onclick=agregar_maestro() class="btn btn-success">Agregar</button>
                                                                     </div>
                                                                 </div>
                                                             </form>
