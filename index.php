@@ -96,10 +96,18 @@
                         <div class="card gradient-3">
                             <a href="#" onclick="mostrar_item(3)">
                                 <div class="card-body">
-                                    <h3 class="card-title text-white">7 asignaturas</h3>
+                                    <h3 class="card-title text-white">Agregar, editar, eliminar...</h3>
                                     <div class="d-inline-block">
                                         <h2 class="text-white">Asignaturas</h2>
-                                        <p class="text-white mb-0">Agregar, eliminar...</p>
+
+                                        <?php
+                                        
+                                            $result = mysqli_query($link, "select * from asignaturas");
+                                            $total = mysqli_num_rows($result);
+                                            echo '<p class="text-white mb-0"> Asignaturas : '.$total.'</p>';
+                                            
+							            ?>
+                                        
                                     </div>
                                     <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
                                 </div>
@@ -110,10 +118,17 @@
                         <div class="card gradient-4">
                             <a href="#" onclick="mostrar_item(4)">
                                 <div class="card-body">
-                                    <h3 class="card-title text-white">7 maestros</h3>
+                                    <h3 class="card-title text-white">Agregar, editar, eliminar...</h3>
                                     <div class="d-inline-block">
                                         <h2 class="text-white">Maestros</h2>
-                                        <p class="text-white mb-0">Agregar, editar...</p>
+                                        <?php
+                                        
+                                            $result = mysqli_query($link, "select * from maestros");
+                                            $total = mysqli_num_rows($result);
+                                            echo '<p class="text-white mb-0"> Maestros : '.$total.'</p>';
+                                            
+							            ?>
+                                    
                                     </div>
                                     <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                                 </div>
@@ -140,7 +155,7 @@
                                                         <label class="m-t-20">Fecha</label>
                                                         <input type="text" class="form-control" name="fecha"  placeholder="2000-26-04" id="mdate">
                                                             <label class="">Asignatura</label>
-                                                            <div class="col-sm-10">
+                                                            <div class="col-sm-10" id="carga_nav">
                                                                 <select id="inputState"   name="materia" class="form-control">
                                                                     
                                                                     <?php
@@ -151,7 +166,7 @@
                                                                             echo '<option value="'.$row["id_materia"].'">'.$row["nombre"].'
                                                                                 </option>';
                                                                         }
-                                                            ?>   
+                                                                    ?>   
                                                                 </select>
                                                             </div>
                                                             <div class="">
@@ -574,17 +589,17 @@
                                             <div class="card-body">
                                                 <h4 class="card-title">Agregar materia</h4>
                                                 <div class="basic-form">
-                                                    <form>
+                                                    <form name= "form_materia"  method="GET">
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Nombre materia</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" placeholder="Nombre(s)">
+                                                                <input type="text" name="materia" class="form-control" placeholder="Nombre(s)">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Maestro</label>
                                                             <div class="col-sm-10">
-                                                                <select id="inputState"   name="materia" class="form-control">
+                                                                <select id="inputState" name="maestro" class="form-control">
                                                                     
                                                                     <?php
                                                                         $result = mysqli_query($link, "select * from maestros");
@@ -607,7 +622,7 @@
 
                                                         <div class="form-group row">
                                                             <div class="col-sm-10">
-                                                                <button type="submit" class="btn btn-success">Agregar</button>
+                                                                <button type="button" onClick=guardar_materia() class="btn btn-success">Agregar</button>
                                                             </div>
                                                         </div>
                                                         
@@ -616,8 +631,8 @@
                                             </div>
                                         </div>
                     </div>
-                    <div class="col-lg-6">
-                                            <div class="card">
+                    <div class="col-lg-6" id="carga_materia">
+                                            <div class="card" >
                                                 <div class="card-body">
                                                     <h4 class="card-title">MATERIAS</h4>
                                                     <div class="table-responsive"> 
@@ -641,17 +656,44 @@
                                                                                 <td>'.$row["nombre_materia"].'</td>
                                                                                 <td>'.$row["nombre_maestro"].'</td> 
                                                                                 <td>
-                                                                                    <span>
-                                                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Editar">
                                                                                             <i class="fa fa-pencil color-muted m-r-5"></i>
-                                                                                        </a>
-                                                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Close">
+                                                                                        </button>
+                                                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                                                                             <i class="fa fa-close color-danger"></i>
-                                                                                        </a>
-                                                                                    </span>
+                                                                                        </button>
                                                                                 </td>
                                                                             </tr>
-                                                                                ';
+                                                                            
+                                                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog" role="document">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            <form>
+                                                                                                <div class="form-group">
+                                                                                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                                                                                    <input type="text" class="form-control" id="recipient-name">
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <label for="message-text" class="col-form-label">Message:</label>
+                                                                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                                                                </div>
+                                                                                            </form>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                            <button type="button" class="btn btn-primary">Send message</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                            ';
                                                                         }
                                                                 ?> 
                                                                 
@@ -719,7 +761,8 @@
 
     <script src="js/nav.js"></script>
     <script src="js/fc.js"></script> 
-    <script src="js/tareas.js"></script>                                        
+    <script src="js/tareas.js"></script> 
+    <script src="js/asignaturas.js"></script>                                        
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
