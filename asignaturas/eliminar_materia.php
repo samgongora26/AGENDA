@@ -1,17 +1,10 @@
 <?php
-$materia = $_GET["materia"];
-$maestro = $_GET["maestro"];
-$color = $_GET["color"];
+$id = $_GET["id"];
 //$usuario = $_GET["usuario"];
-//echo $color . "---";
 
 include("../php/conexion.php");
 $link = conectarse();
-mysqli_query($link, "INSERT INTO `asignaturas`(`id_maestro`, `nombre`,`color`,`id_usuario`)
-VALUES ($maestro, '$materia','$color',1)");
-
-//INSERT INTO `eventos`(`id_materia`, `titulo`, `descripcion`, `fecha`, `color_importancia`, `id_usuario`, `estado`) 
-//VALUES (2,'Examen','estudiar el pdf','2020-04-09','#9ae6ae',1,0)
+mysqli_query($link, "DELETE FROM `asignaturas` WHERE `id_materia` = $id");
 
 ?> 
  <div class="card" >

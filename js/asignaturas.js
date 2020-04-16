@@ -67,3 +67,53 @@ function guardar_materia(){
             }
     }
   }
+
+
+  function editar_materia(id){
+    var id;
+    var materia = document.getElementById('nueva_materia'+id).value;
+    var maestro = document.getElementById('nuevo_maestro'+id).value;
+    var color = document.getElementById('nuevo_color'+id).value;
+    var url = "./asignaturas/editar_materia.php?materia=" + materia+ "&"+"maestro="+maestro+"&"+"color="+color+"&"+"id="+id;
+    
+    miPeticion2.open("GET", url, true);
+    miPeticion2.onreadystatechange=respuesta_editar;
+    miPeticion2.send(null);
+  }
+
+  function respuesta_editar(){
+    if(miPeticion2.readyState == 1) {
+      document.getElementById("carga_materia").innerHTML="<center>Loading...</center>";
+    }
+    else if(miPeticion2.readyState == 4) {
+    if(miPeticion2.status == 200) {
+     var mitexto=miPeticion2.responseText;
+     document.getElementById("carga_materia").innerHTML=mitexto;
+            } else {
+              alert("Ha ocurrido un error: " + miPeticion2.statusText);
+            }
+    }
+  }
+
+
+  function eliminar_materia(id){
+    var id;
+    var url = "./asignaturas/eliminar_materia.php?id="+id;
+    miPeticion2.open("GET", url, true);
+    miPeticion2.onreadystatechange=respuesta_eliminar;
+    miPeticion2.send(null);
+  }
+
+  function respuesta_eliminar(){
+    if(miPeticion2.readyState == 1) {
+      document.getElementById("carga_materia").innerHTML="<center>Loading...</center>";
+    }
+    else if(miPeticion2.readyState == 4) {
+    if(miPeticion2.status == 200) {
+     var mitexto=miPeticion2.responseText;
+     document.getElementById("carga_materia").innerHTML=mitexto;
+            } else {
+              alert("Ha ocurrido un error: " + miPeticion2.statusText);
+            }
+    }
+  }
