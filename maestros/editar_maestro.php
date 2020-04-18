@@ -8,7 +8,6 @@
     $link = conectarse();
     mysqli_query($link, "UPDATE `maestros` SET `nombre` = '$nombre', `apellido` = '$apellido' WHERE `id_maestro` = $id");
 ?>
-
 <div class="col-lg-6">
                             <div class="card">
                                                     <div class="card-body">
@@ -38,8 +37,7 @@
                                                     </div>
                             </div>
                         </div>
-
-                        <?php
+                                <?php
                                 $result = mysqli_query($link, "select * from maestros");
                                 $total = mysqli_num_rows($result);
                                 
@@ -104,23 +102,23 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar maestro: '.$row["nombre"].'</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar maestra(o): '.$row["nombre"].' '.$row["apellido"].'</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form>
                                                                 <div class="form-group">
-                                                                    <label for="recipient-name" class="col-form-label">¿Seguro que desea eliminar la materia?</label>
+                                                                    <label for="recipient-name" class="col-form-label">¿Seguro que desea eliminar a '.$row["nombre"].' '.$row["apellido"].'?</label>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                                                            <button type="button" onClick=eliminar_materia('.$row["id_maestro"].') data-dismiss="modal"  class="btn btn-danger">Sí</button>
+                                                            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                                                            <button type="button" onClick=eliminar_maestro('.$row["id_maestro"].') data-dismiss="modal"  class="btn btn-danger">Sí</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>';
                                     }
-                                ?>       
+                                ?>

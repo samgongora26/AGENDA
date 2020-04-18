@@ -52,7 +52,6 @@ function guardar_maestro(){
     var id;
     var nombre = document.getElementById('nuevo_nombre'+id).value;
     var apellido = document.getElementById('nuevo_apellido'+id).value;
-    alert("nombre "+nombre + " apellido "+apellido);
     var url = "./maestros/editar_maestro.php?nombre="+nombre+"&"+"apellido="+apellido+"&"+"id="+id;
     miPeticion3.open("GET", url, true);
     miPeticion3.onreadystatechange=respuesta_editar;
@@ -74,7 +73,7 @@ function guardar_maestro(){
   }
 
 
-  function eliminar_maestros(id){
+  function eliminar_maestro(id){
     var id;
     var url = "./maestros/eliminar_maestro.php?id="+id;
     miPeticion3.open("GET", url, true);
