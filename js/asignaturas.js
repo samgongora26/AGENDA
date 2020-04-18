@@ -22,14 +22,12 @@ function getXMLHTTPRequest(){
     }
     
     var miPeticion2 = getXMLHTTPRequest();
-    var recarga_nav = getXMLHTTPRequest();
-    
-
 
 function guardar_materia(){
     var materia = document.form_materia.materia.value;
     var maestro = document.form_materia.maestro.value;
     var color = document.form_materia.color.value;
+    alert("materia "+materia);
     var url = "./asignaturas/guardar_materia.php?materia=" + materia+ "&"+"maestro="+maestro+"&"+"color="+color;
     
     miPeticion2.open("GET", url, true);

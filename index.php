@@ -366,7 +366,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form name="f_editar_materia" method = "GET">
+                                                            <form name="form_editar_maestros" method = "GET">
                                                                 <div class="form-group">
                                                                     <label for="recipient-name" class="col-form-label">Nombre(s):</label>
                                                                     <input type="text" name="nuevo_nombre" value="'.$row["nombre"].'" class="form-control" id="nuevo_nombre'.$row["id_maestro"].'" placeholder="'.$row["nombre"].'">
@@ -556,7 +556,7 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th scope="col">Materia</th>
-                                                                    <th scope="col">Maestro</th>
+                                                                    <th scope="col">Docente</th>
                                                                     
                                                                     <th scope="col">Action</th>
                                                                 </tr>
@@ -591,7 +591,7 @@
                                                                                             </button>
                                                                                         </div>
                                                                                         <div class="modal-body">
-                                                                                            <form name="f_editar_materia" method = "GET">
+                                                                                            <form name="" method = "GET">
                                                                                                 <div class="form-group">
                                                                                                     <label for="recipient-name" class="col-form-label">Nombre de la materia:</label>
                                                                                                     <input type="text" name="nuevo_nombre" value="'.$row["nombre_materia"].'" class="form-control" id="nueva_materia'.$row["id_materia"].'" placeholder="'.$row["nombre_materia"].'">
@@ -612,7 +612,7 @@
                                                                                                 </div>
                                                                                                 <div class="form-group">
                                                                                                     <label class="col-sm-2 col-form-label">Color</label>
-                                                                                                    <input type="text" name="nuevo_color" id="nuevo_color'.$row["id_materia"].'" class="colorpicker form-control" value="rgb(65, 184, 237)" >
+                                                                                                    <input type="text" name="nuevo_color" id="nuevo_color'.$row["id_materia"].'" class="colorpicker form-control" value="'.$row["color"].'" >
                                                                                                 </div>
                                                                                             
                                                                                         </div>
@@ -657,7 +657,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    </div>
+                    </div>
                             
                 </div>
                 

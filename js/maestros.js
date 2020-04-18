@@ -30,11 +30,11 @@ function guardar_maestro(){
     var apellido = document.form_maestros.apellido_maestro.value;
     var url = "./maestros/guardar_maestro.php?nombre=" + nombre+ "&"+"apellido="+apellido;
     miPeticion3.open("GET", url, true);
-    miPeticion3.onreadystatechange=respuesta_agragar;
+    miPeticion3.onreadystatechange=respuesta_agragar_maestro;
     miPeticion3.send(null);
   }
   
-  function respuesta_agragar(){
+  function respuesta_agragar_maestro(){
     if(miPeticion3.readyState == 1) {
       document.getElementById("recarga_maestros").innerHTML="<center>Loading...</center>";
     }
@@ -54,11 +54,11 @@ function guardar_maestro(){
     var apellido = document.getElementById('nuevo_apellido'+id).value;
     var url = "./maestros/editar_maestro.php?nombre="+nombre+"&"+"apellido="+apellido+"&"+"id="+id;
     miPeticion3.open("GET", url, true);
-    miPeticion3.onreadystatechange=respuesta_editar;
+    miPeticion3.onreadystatechange=respuesta_editar_maestro;
     miPeticion3.send(null);
   }
 
-  function respuesta_editar(){
+  function respuesta_editar_maestro(){
     if(miPeticion3.readyState == 1) {
       document.getElementById("recarga_maestros").innerHTML="<center>Loading...</center>";
     }
@@ -77,11 +77,11 @@ function guardar_maestro(){
     var id;
     var url = "./maestros/eliminar_maestro.php?id="+id;
     miPeticion3.open("GET", url, true);
-    miPeticion3.onreadystatechange=respuesta_eliminar;
+    miPeticion3.onreadystatechange=respuesta_eliminar_maestro;
     miPeticion3.send(null);
   }
 
-  function respuesta_eliminar(){
+  function respuesta_eliminar_maestro(){
     if(miPeticion3.readyState == 1) {
       document.getElementById("recarga_maestros").innerHTML="<center>Loading...</center>";
     }

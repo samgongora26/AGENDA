@@ -7,7 +7,7 @@ $link = conectarse();
 mysqli_query($link, "DELETE FROM `asignaturas` WHERE `id_materia` = $id");
 
 ?> 
- <div class="card" >
+                                            <div class="card" >
                                                 <div class="card-body">
                                                     <h4 class="card-title">MATERIAS</h4>
                                                     <div class="table-responsive"> 
@@ -15,7 +15,7 @@ mysqli_query($link, "DELETE FROM `asignaturas` WHERE `id_materia` = $id");
                                                             <thead>
                                                                 <tr>
                                                                     <th scope="col">Materia</th>
-                                                                    <th scope="col">Maestro</th>
+                                                                    <th scope="col">Docente</th>
                                                                     
                                                                     <th scope="col">Action</th>
                                                                 </tr>
@@ -50,7 +50,7 @@ mysqli_query($link, "DELETE FROM `asignaturas` WHERE `id_materia` = $id");
                                                                                             </button>
                                                                                         </div>
                                                                                         <div class="modal-body">
-                                                                                            <form name="f_editar_materia" method = "GET">
+                                                                                            <form name="" method = "GET">
                                                                                                 <div class="form-group">
                                                                                                     <label for="recipient-name" class="col-form-label">Nombre de la materia:</label>
                                                                                                     <input type="text" name="nuevo_nombre" value="'.$row["nombre_materia"].'" class="form-control" id="nueva_materia'.$row["id_materia"].'" placeholder="'.$row["nombre_materia"].'">
@@ -71,7 +71,7 @@ mysqli_query($link, "DELETE FROM `asignaturas` WHERE `id_materia` = $id");
                                                                                                 </div>
                                                                                                 <div class="form-group">
                                                                                                     <label class="col-sm-2 col-form-label">Color</label>
-                                                                                                    <input type="text" name="nuevo_color" id="nuevo_color'.$row["id_materia"].'" class="colorpicker form-control" value="rgb(65, 184, 237)" >
+                                                                                                    <input type="text" name="nuevo_color" id="nuevo_color'.$row["id_materia"].'" class="colorpicker form-control" value="'.$row["color"].'" >
                                                                                                 </div>
                                                                                             
                                                                                         </div>
