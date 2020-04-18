@@ -369,18 +369,18 @@
                                                             <form name="f_editar_materia" method = "GET">
                                                                 <div class="form-group">
                                                                     <label for="recipient-name" class="col-form-label">Nombre(s):</label>
-                                                                    <input type="text" name="nuevo_nombre" value="'.$row["nombre"].'" class="form-control" id="nueva_materia'.$row["id_maestro"].'" placeholder="'.$row["nombre"].'">
+                                                                    <input type="text" name="nuevo_nombre" value="'.$row["nombre"].'" class="form-control" id="nuevo_nombre'.$row["id_maestro"].'" placeholder="'.$row["nombre"].'">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="recipient-name" class="col-form-label">Apellido(s):</label>
-                                                                    <input type="text" name="nuevo_nombre" value="'.$row["apellido"].'" class="form-control" id="nueva_materia'.$row["id_maestro"].'" placeholder="'.$row["nombre"].'">
+                                                                    <input type="text" name="nuevo_apellido" value="'.$row["apellido"].'" class="form-control" id="nuevo_apellido'.$row["id_maestro"].'" placeholder="'.$row["nombre"].'">
                                                                 </div>
                                                                 
                                                             
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button"  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                                            <button type="button" onClick=editar_materia('.$row["id_maestro"].') data-dismiss="modal" class="btn btn-success">Enviar</button>
+                                                            <button type="button" onClick=editar_maestro('.$row["id_maestro"].') data-dismiss="modal" class="btn btn-success">Enviar</button>
                                                         </div>
                                                         </form>
                                                     </div>

@@ -52,8 +52,8 @@ function guardar_maestro(){
     var id;
     var nombre = document.getElementById('nuevo_nombre'+id).value;
     var apellido = document.getElementById('nuevo_apellido'+id).value;
-    var url = "./asignaturas/editar_maestro.php?nombre="+nombre+"&"+"apellido="+apellido+"&"+"id="+id;
-    
+    alert("nombre "+nombre + " apellido "+apellido);
+    var url = "./maestros/editar_maestro.php?nombre="+nombre+"&"+"apellido="+apellido+"&"+"id="+id;
     miPeticion3.open("GET", url, true);
     miPeticion3.onreadystatechange=respuesta_editar;
     miPeticion3.send(null);
@@ -61,12 +61,12 @@ function guardar_maestro(){
 
   function respuesta_editar(){
     if(miPeticion3.readyState == 1) {
-      document.getElementById("carga_materia").innerHTML="<center>Loading...</center>";
+      document.getElementById("recarga_maestros").innerHTML="<center>Loading...</center>";
     }
     else if(miPeticion3.readyState == 4) {
     if(miPeticion3.status == 200) {
      var mitexto=miPeticion3.responseText;
-     document.getElementById("carga_materia").innerHTML=mitexto;
+     document.getElementById("recarga_maestros").innerHTML=mitexto;
             } else {
               alert("Ha ocurrido un error: " + miPeticion3.statusText);
             }
@@ -74,9 +74,9 @@ function guardar_maestro(){
   }
 
 
-  function eliminar_materia(id){
+  function eliminar_maestros(id){
     var id;
-    var url = "./asignaturas/eliminar_materia.php?id="+id;
+    var url = "./maestros/eliminar_maestro.php?id="+id;
     miPeticion3.open("GET", url, true);
     miPeticion3.onreadystatechange=respuesta_eliminar;
     miPeticion3.send(null);
@@ -84,12 +84,12 @@ function guardar_maestro(){
 
   function respuesta_eliminar(){
     if(miPeticion3.readyState == 1) {
-      document.getElementById("carga_materia").innerHTML="<center>Loading...</center>";
+      document.getElementById("recarga_maestros").innerHTML="<center>Loading...</center>";
     }
     else if(miPeticion3.readyState == 4) {
     if(miPeticion3.status == 200) {
      var mitexto=miPeticion3.responseText;
-     document.getElementById("carga_materia").innerHTML=mitexto;
+     document.getElementById("recarga_maestros").innerHTML=mitexto;
             } else {
               alert("Ha ocurrido un error: " + miPeticion3.statusText);
             }
