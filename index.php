@@ -344,12 +344,12 @@
                                                         </div>
                                                      <br>
                                                         <div class="text-center">
-                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal'.$row["id_maestro"].'editar_maestro" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Editar">
-                                                            <i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal'.$row["id_maestro"].'eliminar_maestro" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                            <i class="fa fa-close color-danger"></i>
-                                                        </button>
+                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal'.$row["id_maestro"].'editar_maestro" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                                <i class="fa fa-pencil color-muted m-r-5"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal'.$row["id_maestro"].'eliminar_maestro" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-close color-danger"></i>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                    
@@ -419,86 +419,113 @@
                     <!--------------------CALIFICACIONES----------------->
 
                 <div style="display: none;" id="calificaciones">
-                        <div class="row">
-                                
-                            <div class="col-lg-2">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Materia</h4>
-                                                <h6>Primer parcial</h2>
-                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#99D683", "#f2f2f2"]}'>1,4</span>
+                <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Parciales</h4>
+                                <!-- Nav tabs -->
+                                <div class="default-tab">
+                                    <ul class="nav nav-tabs mb-3" role="tablist">
+                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#contact">Contact</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#message">Message</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#nuevo">nuevo</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel">
+                                            <div class="p-t-15">
+                                                <h4> Primer parcial </h4>
+
+                                                <div class="row">
+
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Materia 85%</h4>
+                                                                <h6>Primer parcial</h2>
+                                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span></div>
+                                                                <!--button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal'.$row["id_maestro"].'editar_maestro" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                                    <i class="fa fa-pencil color-muted m-r-5"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal'.$row["id_maestro"].'eliminar_maestro" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                    <i class="fa fa-close color-danger"></i>
+                                                                </button-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile">
+                                            <div class="p-t-15">
+                                            <h4> Primer parcial </h4>
+
+                                                <div class="row">
+
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Materia 85%</h4>
+                                                                <h6>Primer parcial</h2>
+                                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
-                                </div>
-                                <div class="col-lg-2">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Materia</h4>
-                                                <h6>Primer parcial</h2>
-                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#FFCA4A", "#f2f2f2"]}'>1,4</span>
+                                        <div class="tab-pane fade" id="contact">
+                                            <div class="p-t-15">
+                                            <h4> Primer parcial </h4>
+
+                                                <div class="row">
+
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Materia 85%</h4>
+                                                                <h6>Primer parcial</h2>
+                                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
-                                </div>
-                                <div class="col-lg-2">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Materia</h4>
-                                                <h6>Primer parcial</h2>
-                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#FFCA4A", "#f2f2f2"]}'>4,10</span>
-                                                </div>
+                                        <div class="tab-pane fade" id="message">
+                                            <div class="p-t-15">
+                                                <h4>This is message title</h4>
+                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
+                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
                                             </div>
                                         </div>
-                                </div>
-                                <div class="col-lg-2">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Materia 70%</h4>
-                                                <h6>Primer parcial</h2>
-                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#FFCA4A", "#f2f2f2"]}'>226,134</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                               </div>
-                                <div class="col-lg-2">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Materia 85%</h4>
-                                                <h6>Primer parcial</h2>
-                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span>
-                                                </div>
+                                        <div class="tab-pane fade" id="nuevo">
+                                            <div class="p-t-15">
+                                                <h4>This is message title</h4>
+                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
+                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
                                             </div>
                                         </div>
                                     </div>
-        
-                                    <div class="col-lg-2">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Materia 85%</h4>
-                                                    <h6>Primer parcial</h2>
-                                                    <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-        
-                                        <div class="col-lg-2">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Materia 85%</h4>
-                                                        <h6>Primer parcial</h2>
-                                                        <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-        
-                                
+                                </div>
+                            </div>
                         </div>
-                </div>    
+                    </div>
 
+                                                
+                </div>    
+                
+                <!-----------------------------ASIGNATURAS------------->
                 <div style="display: none;" class="row" id= "materia">
                     <div class="col-lg-6">
                                         <div class="card">
