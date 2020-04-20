@@ -419,110 +419,146 @@
                     <!--------------------CALIFICACIONES----------------->
 
                 <div style="display: none;" id="calificaciones">
-                <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Parciales</h4>
-                                <!-- Nav tabs -->
-                                <div class="default-tab">
-                                    <ul class="nav nav-tabs mb-3" role="tablist">
-                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#contact">Contact</a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#message">Message</a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#nuevo">nuevo</a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="home" role="tabpanel">
-                                            <div class="p-t-15">
-                                                <h4> Primer parcial </h4>
-
-                                                <div class="row">
-
-                                                    <div class="col">
-                                                        <div class="card">
+                    <div class="row" id="recarga_calificaciones">
+                                    <!-- Nav tabs -->
+                                        <?php
+                                        //se obtiene cada uno de los parciales y calificaciones por cada uno de ellos
+                                        $parciales = mysqli_query($link, "SELECT * from parciales");
+                                        $total_parciales = mysqli_num_rows($parciales); //numero de parciales
+                                        
+                                        while($row_parciales = mysqli_fetch_array($parciales)){
+                                            //se asigna la propiedad display none para que no aparezca hasta que sea precionado
+                                            //el bboton correspondiente. este se hace con el id parcial y su respectivo id
+                                            
+                                            echo '
+                                            <div class="col-lg-6 col-md-6">
+                                            <div class="card">
+                                            <div class="card-body">
+                                            <h4 class="card-title">Calificaciones parcial: <i> '.$row_parciales["nombre"].'</i></h4>
+                                            <div class="progress" style="height: 9px;">
+                                            <div class="progress-bar bg-danger" style="width: 90%;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                            </div>
+                                            </div>
+                                            <p> Promedio: </p>
+                                            <div class="row" style="" id="parcial'.$row_parciales["id_parcial"].'>
+                                                
+                                                
+                                            ';
+                                            //En cada iteracion del primer while se obtiene un id del parcial el cual hace que cada parcial obtenga
+                                            //sus respectivas calificaciones
+                                            $num_parcial = $row_parciales["id_parcial"];
+                                            echo $num_parcial;
+                                            $result = mysqli_query($link, "SELECT parciales.id_parcial, asignaturas.nombre as materia, asignaturas.color, calificaciones.calificacion, 
+                                            parciales.nombre as parcial FROM asignaturas, calificaciones, parciales 
+                                            WHERE asignaturas.id_materia = calificaciones.id_materia and 
+                                            calificaciones.id_parcial = parciales.id_parcial and parciales.id_parcial = $num_parcial");
+                                            $total = mysqli_num_rows($result);
+                                            $cont = 0;
+                                            //con este while se obtienen las calificaciones del id del parcial del primer while
+                                            echo'<div class="col" id="calificacion'.$row["id_parcial"].'">
+                                            ';
+                                            while($row=mysqli_fetch_array($result)){
+                                                echo'
+                                                
+                                                    <div class="card">
                                                             <div class="card-body">
-                                                                <h4 class="card-title">Materia 85%</h4>
-                                                                <h6>Primer parcial</h2>
-                                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span></div>
-                                                                <!--button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal'.$row["id_maestro"].'editar_maestro" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Editar">
-                                                                    <i class="fa fa-pencil color-muted m-r-5"></i>
-                                                                </button>
-                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal'.$row["id_maestro"].'eliminar_maestro" class="fa fa-pencil color-muted m-r-5" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                    <i class="fa fa-close color-danger"></i>
-                                                                </button-->
-                                                            </div>
+                                                                <h4 class="card-title">Materia '.$row["materia"].' </h4>
+                                                                <h6>Calificación: '.$row["calificacion"].' '.$row["id_parcial"].'</h6>
+                                                            <div class="text-center"><span class="donut" data-peity=\'{ "fill": ["'.$row["color"].'", "#edeeff"]}\'>'.$row["calificacion"].'/100</span></div>
                                                         </div>
                                                     </div>
-
-                                                </div>
-
+                                                ';
+                                            }
+                                            echo '</div>
                                             </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="profile">
-                                            <div class="p-t-15">
-                                            <h4> Primer parcial </h4>
-
-                                                <div class="row">
-
-                                                    <div class="col">
-                                                        <div class="card">
-                                                            <div class="card-body">
-                                                                <h4 class="card-title">Materia 85%</h4>
-                                                                <h6>Primer parcial</h2>
-                                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span></div>
+                                            </div>
+                                            </div>
+                                            ';
+                                        }
+                                        ?> 
+                                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Agregar calificación</h4>
+                                                <div class="basic-form">
+                                                    <form name= "form_guardar_calificacion"  method="GET">
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" for="val-digits">Calificación</label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" id="val-digits" name="calificacion" placeholder="90">
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Materia</label>
+                                                            <div class="col-sm-10">
+                                                                <select id="inputState" name="materia" class="form-control">
+                                                                    
+                                                                    <?php
+                                                                        $result = mysqli_query($link, "select * from asignaturas");
+                                                                        $total = mysqli_num_rows($result);
+                                                                        
+                                                                        while($row=mysqli_fetch_array($result)){
+                                                                            echo '<option value="'.$row["id_materia"].'">'.$row["nombre"].'
+                                                                                </option>';
+                                                                        }
+                                                                    ?>   
+                                                                </select>
+                                                            </div>   
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Parcial</label>
+                                                            <div class="col-sm-10">
+                                                                <select id="inputState" name="parcial" class="form-control">
+                                                                    
+                                                                    <?php
+                                                                        $result = mysqli_query($link, "select * from parciales");
+                                                                        $total = mysqli_num_rows($result);
+                                                                        
+                                                                        while($row=mysqli_fetch_array($result)){
+                                                                            echo '<option value="'.$row["id_parcial"].'">'.$row["nombre"].'
+                                                                                </option>';
+                                                                        }
+                                                                    ?>   
+                                                                </select>
+                                                            </div>   
+                                                        </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="contact">
-                                            <div class="p-t-15">
-                                            <h4> Primer parcial </h4>
-
-                                                <div class="row">
-
-                                                    <div class="col">
-                                                        <div class="card">
-                                                            <div class="card-body">
-                                                                <h4 class="card-title">Materia 85%</h4>
-                                                                <h6>Primer parcial</h2>
-                                                                <div class="text-center"><span class="donut" data-peity='{ "fill": ["#6164C1", "#f2f2f2"]}'>85/100</span></div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-10">
+                                                                <button type="button" onClick=guardar_calificacion() class="btn btn-success">Agregar</button>
                                                             </div>
                                                         </div>
-                                                    </div>
-
+                                                        
+                                                    </form>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="message">
-                                            <div class="p-t-15">
-                                                <h4>This is message title</h4>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="nuevo">
-                                            <div class="p-t-15">
-                                                <h4>This is message title</h4>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Agregar parcial</h4>
+                                                <div class="basic-form">
+                                                    <form name= "form_parciales"  method="GET">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Nombre del parcial</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                                                            </div>
+                                                        </div>
 
-                                                
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-10">
+                                                                <button type="button" onClick=guardar_parcial() class="btn btn-success">Agregar</button>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
                 </div>    
                 
                 <!-----------------------------ASIGNATURAS------------->
@@ -684,14 +720,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                    </div>
-                            
+                    </div>      
                 </div>
-                
-
                     <!--+++++++++++++++++++ PERFIL++++++++++++++++++++++++++-->
-                    <div class="row">
-                            <div class="col-lg-4 col-xl-3">
+                    
+            <!--div class="col-lg-4 col-xl-3">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="media align-items-center mb-4">
@@ -710,10 +743,10 @@
                                         </div>
                                     </div>  
                                 </div>      
-                    </div>
+                   
 
 
-            </div>
+            </div-->
             <!-- #/ container -->
         </div>
         <!--**********************************
@@ -745,7 +778,8 @@
     <script src="js/fc.js"></script> 
     <script src="js/tareas.js"></script> 
     <script src="js/asignaturas.js"></script>
-    <script src="js/maestros.js"></script>                                        
+    <script src="js/maestros.js"></script>    
+    <script src="js/calificaciones.js"></script>                                        
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
