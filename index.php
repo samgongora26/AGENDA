@@ -84,8 +84,25 @@
                                 <div class="card-body">
                                     <h3 class="card-title text-white">Caificaciones</h3>
                                     <div class="d-inline-block">
-                                        <h2 class="text-white">Parcial: 1</h2>
-                                        <p class="text-white mb-0">Promedio : 90.9</p>
+
+                                        <?php
+
+                                        $parciales = mysqli_query($link, "SELECT * from parciales");
+                                        $total_parciales = mysqli_num_rows($parciales); //numero de parciales
+                                        while($row_parciales = mysqli_fetch_array($parciales)){
+                                            //se asigna la propiedad display none para que no aparezca hasta que sea precionado
+                                            //el bboton correspondiente. este se hace con el id parcial y su respectivo id
+                                            $num_parcial = $row_parciales["id_parcial"];
+                                            $res_p = mysqli_query($link, "SELECT AVG(calificacion) as promedio FROM calificaciones WHERE id_parcial = $num_parcial");
+                                            $promediot = mysqli_num_rows($parciales);
+                                            $promedio = mysqli_fetch_array($res_p)[0];
+                                        }
+                                        
+                                        echo'
+                                        <h2 class="text-white">Parcial: '.$total_parciales.' </h2>
+                                        <p class="text-white mb-0">Promedio : '.$promedio.'</p>
+                                        ';
+                                        ?>
                                     </div>
                                     <span class="float-right display-5 opacity-5"><i class="fa fa-mortar-board"></i></span>
                                 </div>
@@ -429,6 +446,10 @@
                                         while($row_parciales = mysqli_fetch_array($parciales)){
                                             //se asigna la propiedad display none para que no aparezca hasta que sea precionado
                                             //el bboton correspondiente. este se hace con el id parcial y su respectivo id
+                                            $num_parcial = $row_parciales["id_parcial"];
+                                            $res_p = mysqli_query($link, "SELECT AVG(calificacion) as promedio FROM calificaciones WHERE id_parcial = $num_parcial");
+                                            $promediot = mysqli_num_rows($parciales);
+                                            $promedio = mysqli_fetch_array($res_p)[0];
                                             
                                             echo '
                                             <div class="col-lg-6 col-md-6">
@@ -437,20 +458,19 @@
                                             <h4 class="card-title">Calificaciones parcial: <i> '.$row_parciales["nombre"].'</i></h4>
                                             
                                             <div class="progress" style="height: 9px;">
-                                            <div class="progress-bar bg-danger" style="width: 90%;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                            <div class="progress-bar bg-danger" style="width: '.$promedio.'%;" role="progressbar"><span class="sr-only">'.$promedio.'% Complete</span>
                                             </div>
                                             </div>
-                                            <p> Promedio: </p>
+                                            <p> Promedio: '.$promedio.' </p>
                                             <div class="row" style="" id="parcial'.$row_parciales["id_parcial"].'>   
                                             ';
 
                                           
-                                            //-------------------------MODAL DE EDITAR parcial
                                                                             
                                             //En cada iteracion del primer while se obtiene un id del parcial el cual hace que cada parcial obtenga
                                             //sus respectivas calificaciones
-                                            $num_parcial = $row_parciales["id_parcial"];
-                                            echo $num_parcial;
+                                            
+                                            
                                             $result = mysqli_query($link, "SELECT calificaciones.id_calificacion, parciales.id_parcial, asignaturas.nombre as materia, asignaturas.color, calificaciones.calificacion, 
                                             parciales.nombre as parcial FROM asignaturas, calificaciones, parciales 
                                             WHERE asignaturas.id_materia = calificaciones.id_materia and 
@@ -490,7 +510,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form name= "form_guardar_calificacion"  method="GET">
+                                                                <form name= ""  method="GET">
                                                                     <div class="form-group row">
                                                                         <label class="col-lg-4 col-form-label" for="val-digits">Calificación</label>
                                                                         <div class="col-lg-6">
@@ -582,7 +602,7 @@
                                             <div class="card-body">
                                                 <h4 class="card-title">Agregar calificación</h4>
                                                 <div class="basic-form">
-                                                    <form name= "form_guardar_calificacion"  method="GET">
+                                                <form name= "form_guardar_calificacion"  method="GET">
                                                         <div class="form-group row">
                                                             <label class="col-lg-4 col-form-label" for="val-digits">Calificación</label>
                                                             <div class="col-lg-6">
@@ -631,6 +651,7 @@
                                                         </div>
                                                         
                                                     </form>
+                                      
                                                 </div>
                                             </div>
                                         </div>
@@ -644,7 +665,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Nombre del parcial</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                                                                <input type="text" id="nombre_parcial_original" class="form-control" placeholder="Nombre">
                                                             </div>
                                                         </div>
 

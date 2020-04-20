@@ -26,7 +26,7 @@ function getXMLHTTPRequest(){
 
 
 function guardar_parcial(){
-    var nombre = document.form_parciales.nombre.value;
+    var nombre = document.getElementById("nombre_parcial_original").value;
     var url = "./calificaciones/guardar_parcial.php?nombre=" + nombre;
     miPericion4.open("GET", url, true);
     miPericion4.onreadystatechange=respuesta_agregar_parcial;
@@ -47,8 +47,7 @@ function guardar_parcial(){
     }
   }
 
-  
-function guardar_calificacion(){
+  function guardar_calificacion(){
     var calificacion = document.form_guardar_calificacion.calificacion.value;
     var materia = document.form_guardar_calificacion.materia.value;
     var parcial = document.form_guardar_calificacion.parcial.value;
@@ -71,7 +70,6 @@ function guardar_calificacion(){
             }
     }
   }
-
   
   function editar_calificacion(id){
     var id;
@@ -165,8 +163,6 @@ function guardar_calificacion(){
             }
     }
   }
-
-  //-------------------------------parciales
 
 
 
