@@ -71,3 +71,55 @@ function guardar_calificacion(){
             }
     }
   }
+
+  
+  function editar_calificacion(id){
+    var id;
+    var calificacion = document.getElementById('nueva_calificacion'+id).value;
+    var materia = document.getElementById('nueva_materia'+id).value;
+    var parcial = document.getElementById('nuevo_parcial'+id).value;
+    var url = "./calificaciones/editar_calificacion.php?calificacion="+calificacion+"&"+ "materia=" + materia+ "&"+"parcial="+parcial+"&"+"id="+id;
+    miPericion4.open("GET", url, true);
+    miPericion4.onreadystatechange=respuesta_editar_calificacion;
+    miPericion4.send(null);
+  }
+
+  function respuesta_editar_calificacion(){
+    if(miPericion4.readyState == 1) {
+      document.getElementById("recarga_calificaciones").innerHTML="<center>Loading...</center>";
+    }
+    else if(miPericion4.readyState == 4) {
+    if(miPericion4.status == 200) {
+     var mitexto=miPericion4.responseText;
+     document.getElementById("recarga_calificaciones").innerHTML=mitexto;
+            } else {
+              alert("Ha ocurrido un error: " + miPericion4.statusText);
+            }
+    }
+  }
+
+  function el_calificacion(id){
+    var id;
+    alert(id);
+    var url = "./calificaciones/eliminar_calificacion.php?id="+id;
+    miPericion4.open("GET", url, true);
+    miPericion4.onreadystatechange=respuesta_eliminar_calificacion;
+    miPericion4.send(null);
+  }
+
+  function respuesta_eliminar_calificacion(){
+    if(miPericion4.readyState == 1) {
+      document.getElementById("recarga_calificaciones").innerHTML="<center>Loading...</center>";
+    }
+    else if(miPericion4.readyState == 4) {
+    if(miPericion4.status == 200) {
+     var mitexto=miPericion4.responseText;
+     document.getElementById("recarga_calificaciones").innerHTML=mitexto;
+            } else {
+              alert("Ha ocurrido un error: " + miPericion4.statusText);
+            }
+    }
+  }
+
+
+ 
