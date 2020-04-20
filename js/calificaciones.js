@@ -98,9 +98,32 @@ function guardar_calificacion(){
     }
   }
 
+  function editar_parcial(id){
+    var id;
+    var nombre = document.getElementById('nuevo_nombre_parcial'+id).value;
+    var url = "./calificaciones/editar_parcial.php?nombre="+nombre+"&"+ "id="+id;
+    miPericion4.open("GET", url, true);
+    miPericion4.onreadystatechange=respuesta_editar_calificacion;
+    miPericion4.send(null);
+  }
+
+  function respuesta_editar_calificacion(){
+    if(miPericion4.readyState == 1) {
+      document.getElementById("recarga_calificaciones").innerHTML="<center>Loading...</center>";
+    }
+    else if(miPericion4.readyState == 4) {
+    if(miPericion4.status == 200) {
+     var mitexto=miPericion4.responseText;
+     document.getElementById("recarga_calificaciones").innerHTML=mitexto;
+            } else {
+              alert("Ha ocurrido un error: " + miPericion4.statusText);
+            }
+    }
+  }
+
   function el_calificacion(id){
     var id;
-    alert(id);
+  
     var url = "./calificaciones/eliminar_calificacion.php?id="+id;
     miPericion4.open("GET", url, true);
     miPericion4.onreadystatechange=respuesta_eliminar_calificacion;
@@ -120,6 +143,32 @@ function guardar_calificacion(){
             }
     }
   }
+
+  function el_parcial(id){
+    var id;
+    var url = "./calificaciones/eliminar_parcial.php?id="+id;
+    miPericion4.open("GET", url, true);
+    miPericion4.onreadystatechange=respuesta_eliminar_calificacion;
+    miPericion4.send(null);
+  }
+
+  function respuesta_eliminar_parcial(){
+    if(miPericion4.readyState == 1) {
+      document.getElementById("recarga_calificaciones").innerHTML="<center>Loading...</center>";
+    }
+    else if(miPericion4.readyState == 4) {
+    if(miPericion4.status == 200) {
+     var mitexto=miPericion4.responseText;
+     document.getElementById("recarga_calificaciones").innerHTML=mitexto;
+            } else {
+              alert("Ha ocurrido un error: " + miPericion4.statusText);
+            }
+    }
+  }
+
+  //-------------------------------parciales
+
+
 
 
  

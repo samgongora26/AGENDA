@@ -695,7 +695,7 @@
                                                                                             <div class="form-group row">
                                                                                             <label class="col-sm-2 col-form-label">Nombre del parcial</label>
                                                                                             <div class="col-sm-10">
-                                                                                                <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                                                                                                <input type="text" name="nombre" class="form-control" id="nuevo_nombre_parcial'.$row["id_parcial"].'" placeholder="Nombre">
                                                                                             </div>
                                                                                         </div>
                                                                                             
@@ -728,7 +728,7 @@
                                                                                         </div>
                                                                                         <div class="modal-footer">
                                                                                             <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                                                                                            <button type="button" onClick=eliminar_parcial('.$row["id_parcial"].') data-dismiss="modal"  class="btn btn-danger">Sí</button>
+                                                                                            <button type="button" onClick=el_parcial('.$row["id_parcial"].') data-dismiss="modal"  class="btn btn-danger">Sí</button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
