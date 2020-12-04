@@ -2,7 +2,7 @@
 $id = $_GET["id"];
 //$usuario = $_GET["usuario"];
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "DELETE FROM `asignaturas` WHERE `id_materia` = $id");
 

@@ -4,7 +4,7 @@ $materia = $_GET["materia"];
 $parcial  = $_GET["parcial"];
 //$usuario = $_GET["usuario"];
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "INSERT INTO `calificaciones`(`id_materia`, `calificacion`, `id_usuario`, `id_parcial`) 
 VALUES ($materia, $calificacion, 1, $parcial)");

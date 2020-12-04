@@ -1,7 +1,7 @@
 <?php
     $tarea = $_GET["tarea"];
     //echo $tarea;
-    include("../php/conexion.php");
+    include("../../../config/conexion.php");
     $link = conectarse();
     mysqli_query($link, "INSERT INTO `to_do`(`tarea`, `id_usuario`, `estado`) VALUES  ('$tarea', 1, 0)");
 ?> 

@@ -2,7 +2,7 @@
 $nombre = $_GET["nombre"];
 //$usuario = $_GET["usuario"];
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "INSERT INTO `parciales`(`nombre`,`id_usuario`)
 VALUES ('$nombre',1)");

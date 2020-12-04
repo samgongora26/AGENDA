@@ -3,7 +3,7 @@ $nombre = $_GET["nombre"];
 $apellido = $_GET["apellido"];
 
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "INSERT INTO `maestros`(`nombre`, `apellido`, `id_usuario`) VALUES ('$nombre','$apellido',1)");
 

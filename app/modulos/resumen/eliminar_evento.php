@@ -1,7 +1,7 @@
 <?php
 $id = $_GET["id"];
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "DELETE FROM `eventos` WHERE id_evento = $id");
 

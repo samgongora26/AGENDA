@@ -8,7 +8,7 @@ $color = $_GET["color"];
 //echo $materia.  " ". $titulo . " " . $descripcion . " " . $fecha . " " . $color;
 //echo $color . "---";
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "INSERT INTO `eventos`(`id_materia`, `titulo`, `descripcion`, `fecha`, `color_importancia`, `id_usuario`, `estado`)
 VALUES ($materia,'$titulo','$descripcion','$fecha','$color',1,0)");

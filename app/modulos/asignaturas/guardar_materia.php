@@ -4,7 +4,7 @@ $maestro = $_GET["maestro"];
 $color = $_GET["color"];
 //$usuario = $_GET["usuario"];
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "INSERT INTO `asignaturas`(`id_maestro`, `nombre`,`color`,`id_usuario`)
 VALUES ($maestro, '$materia','$color',1)");

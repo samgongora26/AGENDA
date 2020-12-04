@@ -1,7 +1,7 @@
 <?php
 $id = $_GET["id"];
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 
 $resulta = mysqli_query($link, "SELECT * FROM to_do WHERE id_tarea = $id");
