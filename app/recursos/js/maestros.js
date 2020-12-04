@@ -28,7 +28,7 @@ function getXMLHTTPRequest(){
 function guardar_maestro(){
     var nombre = document.form_maestros.nombre_maestro.value;
     var apellido = document.form_maestros.apellido_maestro.value;
-    var url = "./maestros/guardar_maestro.php?nombre=" + nombre+ "&"+"apellido="+apellido;
+    var url = "./modulos/maestros/guardar_maestro.php?nombre=" + nombre+ "&"+"apellido="+apellido;
     miPeticion3.open("GET", url, true);
     miPeticion3.onreadystatechange=respuesta_agragar_maestro;
     miPeticion3.send(null);
@@ -52,7 +52,7 @@ function guardar_maestro(){
     var id;
     var nombre = document.getElementById('nuevo_nombre'+id).value;
     var apellido = document.getElementById('nuevo_apellido'+id).value;
-    var url = "./maestros/editar_maestro.php?nombre="+nombre+"&"+"apellido="+apellido+"&"+"id="+id;
+    var url = "./modulos/maestros/editar_maestro.php?nombre="+nombre+"&"+"apellido="+apellido+"&"+"id="+id;
     miPeticion3.open("GET", url, true);
     miPeticion3.onreadystatechange=respuesta_editar_maestro;
     miPeticion3.send(null);

@@ -31,7 +31,7 @@ var fecha = document.form_evento.fecha.value;
 var materia = document.form_evento.materia.value;
 var color = document.form_evento.color.value;
 //alert("titulo "+ titulo+" descripcion "+descripcion + " materia " + materia + " fecha "+ fecha +" color " +color);
-var url = "./resumen/guardar_evento.php?titulo=" + titulo +"&"+"descripcion="+descripcion+"&"+"materia="+materia+"&"+"fecha="+fecha+"&"+"color="+color;
+var url = "./modulos/resumen/guardar_evento.php?titulo=" + titulo +"&"+"descripcion="+descripcion+"&"+"materia="+materia+"&"+"fecha="+fecha+"&"+"color="+color;
 miPeticion.open("GET", url, true);
 miPeticion.onreadystatechange=respuestaAjax;
 miPeticion.send(null);
@@ -56,7 +56,7 @@ if(miPeticion.status == 200) {
 function marcar_evento(id){
   var id
   //alert("id " +id);
-  var url = "./resumen/marcar_evento.php?id=" + id;
+  var url = "./modulos/resumen/marcar_evento.php?id=" + id;
   miPeticion.open("GET", url, true);
   miPeticion.onreadystatechange=respuestaAjax1;
   miPeticion.send(null);
@@ -82,7 +82,7 @@ function marcar_evento(id){
   function eliminar_evento(id){
     var id
     //alert("id " +id);
-    var url = "./resumen/eliminar_evento.php?id=" + id;
+    var url = "./modulos/resumen/eliminar_evento.php?id=" + id;
     miPeticion.open("GET", url, true);
     miPeticion.onreadystatechange=respuestaAjax2;
     miPeticion.send(null);

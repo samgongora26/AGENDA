@@ -28,7 +28,7 @@ function guardar_materia(){
     var maestro = document.form_materia.maestro.value;
     var color = document.form_materia.color.value;
 
-    var url = "./asignaturas/guardar_materia.php?materia=" + materia+ "&"+"maestro="+maestro+"&"+"color="+color;
+    var url = "../../modulos/asignaturas/guardar_materia.php?materia=" + materia+ "&"+"maestro="+maestro+"&"+"color="+color;
     
     miPeticion2.open("GET", url, true);
     miPeticion2.onreadystatechange=respuesta_agragar;
@@ -72,7 +72,7 @@ function guardar_materia(){
     var materia = document.getElementById('nueva_materia'+id).value;
     var maestro = document.getElementById('nuevo_maestro'+id).value;
     var color = document.getElementById('nuevo_color'+id).value;
-    var url = "./asignaturas/editar_materia.php?materia=" + materia+ "&"+"maestro="+maestro+"&"+"color="+color+"&"+"id="+id;
+    var url = "./modulos/asignaturas/editar_materia.php?materia=" + materia+ "&"+"maestro="+maestro+"&"+"color="+color+"&"+"id="+id;
     
     miPeticion2.open("GET", url, true);
     miPeticion2.onreadystatechange=respuesta_editar;
@@ -96,7 +96,7 @@ function guardar_materia(){
 
   function eliminar_materia(id){
     var id;
-    var url = "./asignaturas/eliminar_materia.php?id="+id;
+    var url = "../../modulos/asignaturas/eliminar_materia.php?id="+id;
     miPeticion2.open("GET", url, true);
     miPeticion2.onreadystatechange=respuesta_eliminar;
     miPeticion2.send(null);

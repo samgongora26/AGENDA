@@ -6,7 +6,7 @@ $id = $_GET["id"];
 //$usuario = $_GET["usuario"];
 
 
-include("../php/conexion.php");
+include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "UPDATE `asignaturas` SET `id_maestro` = $maestro, `nombre` = '$materia',`color` = '$color' WHERE `id_materia` = $id");
 
@@ -121,3 +121,5 @@ mysqli_query($link, "UPDATE `asignaturas` SET `id_maestro` = $maestro, `nombre` 
                                                     </div>
                                                 </div>
                                             </div>
+
+                                                                        
