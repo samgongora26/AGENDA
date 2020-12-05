@@ -75,7 +75,7 @@ function guardar_maestro(){
 
   function eliminar_maestro(id){
     var id;
-    var url = "./maestros/eliminar_maestro.php?id="+id;
+    var url = "./modulos/maestros/eliminar_maestro.php?id="+id;
     miPeticion3.open("GET", url, true);
     miPeticion3.onreadystatechange=respuesta_eliminar_maestro;
     miPeticion3.send(null);

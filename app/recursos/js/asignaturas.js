@@ -28,7 +28,7 @@ function guardar_materia(){
     var maestro = document.form_materia.maestro.value;
     var color = document.form_materia.color.value;
 
-    var url = "../../modulos/asignaturas/guardar_materia.php?materia=" + materia+ "&"+"maestro="+maestro+"&"+"color="+color;
+    var url = "./modulos/asignaturas/guardar_materia.php?materia=" + materia+ "&"+"maestro="+maestro+"&"+"color="+color;
     
     miPeticion2.open("GET", url, true);
     miPeticion2.onreadystatechange=respuesta_agragar;
@@ -96,7 +96,7 @@ function guardar_materia(){
 
   function eliminar_materia(id){
     var id;
-    var url = "../../modulos/asignaturas/eliminar_materia.php?id="+id;
+    var url = "./modulos/asignaturas/eliminar_materia.php?id="+id;
     miPeticion2.open("GET", url, true);
     miPeticion2.onreadystatechange=respuesta_eliminar;
     miPeticion2.send(null);
