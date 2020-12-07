@@ -4,8 +4,8 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.php">
-                    <b class="logo-abbr"><img src="recursos/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="recursos/images/logo-compact.png" alt=""></span>
+                    <b class="logo-abbr"><img src="recursos/images/Ae.png" alt=""> </b>
+                    <span class="logo-compact"><img width="110"src="recursos/images/Agenda escolar (2).png" alt=""></span>
                     <span class="brand-title">
                         <img src="recursos/images/logo-text.png" alt="">
                     </span>
