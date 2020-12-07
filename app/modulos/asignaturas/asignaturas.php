@@ -17,7 +17,7 @@
                                                                 <select id="inputState" name="maestro" class="form-control">
                                                                     
                                                                     <?php
-                                                                        $result = mysqli_query($link, "select * from maestros");
+                                                                        $result = mysqli_query($link, "select * from maestros WHERE `maestros`.`id_usuario` = $id_user");
                                                                         $total = mysqli_num_rows($result);
                                                                         
                                                                         while($row=mysqli_fetch_array($result)){
@@ -62,7 +62,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 <?php
-                                                                        $result = mysqli_query($link, "SELECT asignaturas.id_materia, asignaturas.color, asignaturas.nombre as nombre_materia, maestros.nombre as nombre_maestro FROM asignaturas, maestros WHERE asignaturas.id_maestro = maestros.id_maestro");
+                                                                        $result = mysqli_query($link, "SELECT asignaturas.id_materia, asignaturas.color, asignaturas.nombre as nombre_materia, maestros.nombre as nombre_maestro FROM asignaturas, maestros WHERE asignaturas.id_maestro = maestros.id_maestro and `asignaturas`.`id_usuario` = $id_user");
                                                                         $total = mysqli_num_rows($result);
                                                                         
                                                                         while($row=mysqli_fetch_array($result)){
@@ -99,7 +99,7 @@
                                                                                                     <label for="recipient-name" class="col-form-label">Maestro:</label>
                                                                                                     <select id="nuevo_maestro'.$row["id_materia"].'" name="nuevo_maestro" class="form-control">
                                                                                                     ';
-                                                                                                        $result_m = mysqli_query($link, "select * from maestros");
+                                                                                                        $result_m = mysqli_query($link, "select * from maestros WHERE `maestros`.`id_usuario` = $id_user");
                                                                                                         $total_m = mysqli_num_rows($result_m);
                                                                                                         
                                                                                                         while($row_m=mysqli_fetch_array($result_m)){

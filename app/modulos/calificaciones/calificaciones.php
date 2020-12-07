@@ -3,14 +3,14 @@
                                     <!-- Nav tabs -->
                                         <?php
                                         //se obtiene cada uno de los parciales y calificaciones por cada uno de ellos
-                                        $parciales = mysqli_query($link, "SELECT * from parciales");
+                                        $parciales = mysqli_query($link, "SELECT * from parciales WHERE `parciales`.`id_usuario` = $id_user");
                                         $total_parciales = mysqli_num_rows($parciales); //numero de parciales
                                         
                                         while($row_parciales = mysqli_fetch_array($parciales)){
                                             //se asigna la propiedad display none para que no aparezca hasta que sea precionado
                                             //el bboton correspondiente. este se hace con el id parcial y su respectivo id
                                             $num_parcial = $row_parciales["id_parcial"];
-                                            $res_p = mysqli_query($link, "SELECT AVG(calificacion) as promedio FROM calificaciones WHERE id_parcial = $num_parcial");
+                                            $res_p = mysqli_query($link, "SELECT AVG(calificacion) as promedio FROM calificaciones WHERE id_parcial = $num_parcial and `calificaciones`.`id_usuario` = $id_user");
                                             $promediot = mysqli_num_rows($parciales);
                                             $promedio = mysqli_fetch_array($res_p)[0];
                                             
@@ -34,10 +34,16 @@
                                             //sus respectivas calificaciones
                                             
                                             
-                                            $result = mysqli_query($link, "SELECT calificaciones.id_calificacion, parciales.id_parcial, asignaturas.nombre as materia, asignaturas.color, calificaciones.calificacion, 
-                                            parciales.nombre as parcial FROM asignaturas, calificaciones, parciales 
-                                            WHERE asignaturas.id_materia = calificaciones.id_materia and 
-                                            calificaciones.id_parcial = parciales.id_parcial and parciales.id_parcial = $num_parcial");
+                                            $result = mysqli_query($link, 
+                                                "SELECT calificaciones.id_calificacion, parciales.id_parcial, asignaturas.nombre as materia, asignaturas.color, calificaciones.calificacion, parciales.nombre as parcial, asignaturas.`id_usuario` as usuario 
+
+                                                FROM asignaturas, calificaciones, parciales 
+                                                
+                                                WHERE asignaturas.id_materia = calificaciones.id_materia 
+                                                    and calificaciones.id_parcial = parciales.id_parcial 
+                                                    and parciales.id_parcial = $num_parcial 
+                                                    and asignaturas.id_usuario = calificaciones.id_usuario = parciales.id_usuario
+                                                    and calificaciones.id_usuario = $id_user");
                                             $total = mysqli_num_rows($result);
                                             $cont = 0;
                                             //con este while se obtienen las calificaciones del id del parcial del primer while
@@ -86,7 +92,7 @@
                                                                             <select id="nueva_materia'.$row["id_calificacion"].'" name="materia" class="form-control">
                                                                                 
                                                                                 ';
-                                                                                    $r = mysqli_query($link, "select * from asignaturas");
+                                                                                    $r = mysqli_query($link, "select * from asignaturas where asignaturas.id_usuario = $id_user");
                                                                                     $t = mysqli_num_rows($r);
                                                                                     
                                                                                     while($ro=mysqli_fetch_array($r)){
@@ -102,7 +108,7 @@
                                                                         <div class="col-sm-10">
                                                                             <select id="nuevo_parcial'.$row["id_calificacion"].'" name="parcial" class="form-control">
                                                                                 ';
-                                                                                    $res = mysqli_query($link, "select * from parciales");
+                                                                                    $res = mysqli_query($link, "select * from parciales where parciales.id_usuario = $id_user");
                                                                                     $total1 = mysqli_num_rows($res);
                                                                                     
                                                                                     while($row1=mysqli_fetch_array($res)){
@@ -178,7 +184,7 @@
                                                                 <select id="inputState" name="materia" class="form-control">
                                                                     
                                                                     <?php
-                                                                        $result = mysqli_query($link, "select * from asignaturas");
+                                                                        $result = mysqli_query($link, "select * from asignaturas WHERE `asignaturas`.`id_usuario` = $id_user");
                                                                         $total = mysqli_num_rows($result);
                                                                         
                                                                         while($row=mysqli_fetch_array($result)){
@@ -195,7 +201,7 @@
                                                                 <select id="inputState" name="parcial" class="form-control">
                                                                     
                                                                     <?php
-                                                                        $result = mysqli_query($link, "select * from parciales");
+                                                                        $result = mysqli_query($link, "select * from parciales WHERE `parciales`.`id_usuario` = $id_user");
                                                                         $total = mysqli_num_rows($result);
                                                                         
                                                                         while($row=mysqli_fetch_array($result)){
@@ -247,7 +253,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 <?php
-                                                                        $result = mysqli_query($link, "SELECT * FROM parciales");
+                                                                        $result = mysqli_query($link, "SELECT * FROM parciales WHERE `parciales`.`id_usuario` = $id_user");
                                                                         $total = mysqli_num_rows($result);
                                                                         
                                                                         while($row=mysqli_fetch_array($result)){

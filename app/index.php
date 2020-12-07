@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+    include("../app/modulos/plantillas/sesion.php");    
+?>
 <!--------------------HEAD---------------------->
 <?php include("modulos/plantillas/head.php");?>
 <!--------------------HEAD-------------------/--->
@@ -32,6 +34,7 @@
 
         <div class="content-body">
             <div class="container-fluid mt-3">
+                
                 <!---------BARRA DE INFORMACIÓN GENERAL---------------------->
                 <?php include("modulos/plantillas/barra_de_inf_general.php");?>
 

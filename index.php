@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>Agenda escolar</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="app/recursos/images/favicon.png">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+    <link href="app/recursos/plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
     <link href="app/recursos/css/style.css" rel="stylesheet">
     
 </head>
@@ -43,16 +43,19 @@
                             <div class="card-body pt-5">
                                 <a class="text-center" href="index.php"> <h4>Agenda escolar</h4></a>
         
-                                <form class="mt-5 mb-5 login-input">
+                                <form class="mt-5 mb-5 login-input" method="POST" action="config/sesion/login.php">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email o usuario">
+                                        <input type="text" name="user" class="form-control" placeholder="Email o usuario">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" name="pass" class="form-control" placeholder="Password">
                                     </div>
                                     <button class="btn login-form__btn submit w-100">Ingresar</button>
                                 </form>
                                 <p class="mt-5 login-form__footer">¿No tienes una cuenta? <a href="page-register.html" class="text-primary">Registrate </a>ahora</p>
+                                
+                                <button class="btn btn-danger btn sweet-auto">Sweet Auto Close</button>
+                                    
                             </div>
                         </div>
                     </div>
@@ -72,6 +75,11 @@
     <script src="app/recursos/js/settings.js"></script>
     <script src="app/recursos/js/gleek.js"></script>
     <script src="app/recursos/js/styleSwitcher.js"></script>
+
+    
+    <script src="app/recursos/plugins/sweetalert/js/sweetalert.min.js"></script>
+    <script src="app/recursos/plugins/sweetalert/js/sweetalert.init.js"></script>
+    
 </body>
 </html>
 

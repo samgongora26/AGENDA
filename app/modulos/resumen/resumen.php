@@ -7,14 +7,14 @@
                                             
                                             <form name="form_evento" action="#" method="GET">
                                                     <div class="form-group">
-                                                        <input type="text" name="titulo" class="form-control input-rounded"  placeholder="agregar titulo" >
+                                                        <input type="text" name="titulo" class="form-control input-default"  placeholder="agregar titulo" >
                                                         <label>Descripción</label>
-                                                        <textarea name="descripcion" class="form-control h-150px"   rows="3" id="comment"></textarea>
+                                                        <textarea name="descripcion" class="form-control h-150px input-default"   rows="3" id="comment"></textarea>
                                                         <label class="m-t-20">Fecha</label>
-                                                        <input type="text" class="form-control" name="fecha"  placeholder="2000-26-04" id="mdate">
+                                                        <input type="text" class="form-control input-default" name="fecha"  placeholder="2000-26-04" id="mdate">
                                                             <label class="">Asignatura</label>
                                                             <div class="col-sm-10" id="carga_nav">
-                                                                <select id="inputState"   name="materia" class="form-control">
+                                                                <select id="inputState"   name="materia" class="form-control-md">
                                                                     
                                                                     <?php
                                                                         $result = mysqli_query($link, "select * from asignaturas");
@@ -30,7 +30,7 @@
                                                             <div class="">
                                                                 <div class="example">
                                                                     <p class="text-muted m-b-20">Color</p>
-                                                                    <input type="text" name="color" class="colorpicker form-control" value="rgb(65, 184, 237)" >
+                                                                    <input type="text" name="color" class="colorpicker form-control-md  " value="rgb(65, 184, 237)" >
                                                                 </div>
                                                             </div>
                                                     </div>
@@ -137,11 +137,9 @@
                                                     </ul>
                                                 </div>
                                                 <div class="px-4">
-                                                    
                                                         <input type="text" id="tarea" class="form-control input-rounded" placeholder="agregar tarea">
                                                         <br>
                                                         <button type="button" onClick="guardar_tarea()" class="btn mb-1 btn-success btn-sm">Guardar</button>
-                                                    
                                                 </div>
                                             </div>
                                         </div>

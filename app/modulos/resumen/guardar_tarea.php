@@ -2,8 +2,9 @@
     $tarea = $_GET["tarea"];
     //echo $tarea;
     include("../../../config/conexion.php");
+    include("../plantillas/sesion.php");
     $link = conectarse();
-    mysqli_query($link, "INSERT INTO `to_do`(`tarea`, `id_usuario`, `estado`) VALUES  ('$tarea', 1, 0)");
+    mysqli_query($link, "INSERT INTO `to_do`(`tarea`, `id_usuario`, `estado`) VALUES  ('$tarea', $id_user, 0)");
 ?> 
 <ul >
                                                         <?php

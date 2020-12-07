@@ -30,7 +30,7 @@
                             </div>
                         </div>
                                 <?php
-                                $result = mysqli_query($link, "select * from maestros");
+                                $result = mysqli_query($link, "select * from maestros where maestros.id_usuario = $id_user");
                                 $total = mysqli_num_rows($result);
                                 
                                     while($row=mysqli_fetch_array($result)){

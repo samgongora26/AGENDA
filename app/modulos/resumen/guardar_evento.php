@@ -9,9 +9,10 @@ $color = $_GET["color"];
 //echo $color . "---";
 
 include("../../../config/conexion.php");
+include("../plantillas/sesion.php");
 $link = conectarse();
 mysqli_query($link, "INSERT INTO `eventos`(`id_materia`, `titulo`, `descripcion`, `fecha`, `color_importancia`, `id_usuario`, `estado`)
-VALUES ($materia,'$titulo','$descripcion','$fecha','$color',1,0)");
+VALUES ($materia,'$titulo','$descripcion','$fecha','$color',$id_user,0)");
 
 //INSERT INTO `eventos`(`id_materia`, `titulo`, `descripcion`, `fecha`, `color_importancia`, `id_usuario`, `estado`) 
 //VALUES (2,'Examen','estudiar el pdf','2020-04-09','#9ae6ae',1,0)

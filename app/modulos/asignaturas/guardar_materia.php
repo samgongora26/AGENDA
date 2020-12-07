@@ -4,10 +4,12 @@ $maestro = $_GET["maestro"];
 $color = $_GET["color"];
 //$usuario = $_GET["usuario"];
 
+include("../plantillas/sesion.php");
+
 include("../../../config/conexion.php");
 $link = conectarse();
 mysqli_query($link, "INSERT INTO `asignaturas`(`id_maestro`, `nombre`,`color`,`id_usuario`)
-VALUES ($maestro, '$materia','$color',1)");
+VALUES ($maestro, '$materia','$color',$id_user)");
 
 //INSERT INTO `eventos`(`id_materia`, `titulo`, `descripcion`, `fecha`, `color_importancia`, `id_usuario`, `estado`) 
 //VALUES (2,'Examen','estudiar el pdf','2020-04-09','#9ae6ae',1,0)
