@@ -17,7 +17,7 @@
                                                                 <select id="inputState"   name="materia" class="form-control-md">
                                                                     
                                                                     <?php
-                                                                        $result = mysqli_query($link, "select * from asignaturas");
+                                                                        $result = mysqli_query($link, "select * from asignaturas where id_usuario = $id_user");
                                                                         $total = mysqli_num_rows($result);
                                                                         
                                                                         while($row=mysqli_fetch_array($result)){
@@ -56,7 +56,7 @@
                                     <div id="accordion-three" class="accordion">
                                                                         
                                     <?php
-                                            $result = mysqli_query($link, "select * from eventos");
+                                            $result = mysqli_query($link, "select * from eventos where id_usuario = $id_user");
                                             $total = mysqli_num_rows($result);
                                             $cont = 0;
                                             while($row=mysqli_fetch_array($result)){
@@ -106,7 +106,7 @@
                                                 <div class="" id="todo_list">
                                                     <ul >
                                                         <?php
-                                                            $result = mysqli_query($link, "select * from to_do");
+                                                            $result = mysqli_query($link, "select * from to_do where id_usuario = $id_user");
                                                             $total = mysqli_num_rows($result);
                                                             
                                                             while($row=mysqli_fetch_array($result)){

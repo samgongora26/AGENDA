@@ -28,6 +28,9 @@
                 //ESTA ES UNICA Y YA NO ES NECESARIO REPETIRLA--->
             include("../config/conexion.php");
             $link = conectarse(); /*conexion a la bd*/
+            $result = mysqli_query($link, "SELECT * FROM `usuarios` WHERE `id_usuario` = '$id_user'");
+            $total = mysqli_num_rows($result);                                      
+            $usr=mysqli_fetch_array($result);
         ?>
 
         
@@ -39,7 +42,7 @@
                 <?php include("modulos/plantillas/barra_de_inf_general.php");?>
 
                 <!----------------------MODULOS------------------------------------->
-                
+                <?php echo '<h4 class="text-secondary">Me alegra que estés aquí de nuevo '.  $usr["nombre"] .'</h4>'; ?>
                 <!--+++++++++++++++RRESUMEN+++++++++++++++++++++++++++-->
                 <?php include("modulos/resumen/resumen.php"); ?>
 

@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>Agenda escolar</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="app/recursos/css/style.css" rel="stylesheet">
     
 </head>
 
@@ -33,7 +33,7 @@
 
 
 
-    <div class="login-form-bg h-100">
+    <div class="login-form-bg">
         <div class="container h-100">
             <div class="row justify-content-center h-100">
                 <div class="col-xl-6">
@@ -41,21 +41,28 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 
-                                    <a class="text-center" href="index.html"> <h4>Rosella</h4></a>
+                                    <a class="text-center" href="index.php"> <h4>Agenda escolar</h4></a>
+                                    <h5 class="text-center muted-text">Registro</h5>
         
-                                <form class="mt-5 mb-5 login-input">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="Name" required>
+                                <form class="mt-5 mb-5 login-input" method="post" action="config/sesion/nuevo_usuario.php">
+                                    <div class="form-group" >
+                                        <input type="text" name="nombre" class="form-control"  placeholder="Nombre" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control"  placeholder="Email" required>
+                                        <input type="text" name="apellido" class="form-control"  placeholder="Apellido" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password" required>
+                                        <input type="text" name="edad" class="form-control"  placeholder="Edad" required>
                                     </div>
-                                    <button class="btn login-form__btn submit w-100">Sign in</button>
+                                    <div class="form-group">
+                                        <input type="text" name="usuario" class="form-control"  placeholder="Usuario" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="contrasenia" class="form-control" placeholder="Contraseña" required>
+                                    </div>
+                                    <button class="btn login-form__btn submit w-100" type="submit">Registrarme</button>
                                 </form>
-                                    <p class="mt-5 login-form__footer">Have account <a href="page-login.html" class="text-primary">Sign Up </a> now</p>
+                                    <p class="mt-5 login-form__footer">Tengo una cuenta ¡<a href="index.php" class="text-primary">Iniciar sesión</a>!</p>
                                     </p>
                                 </div>
                             </div>
@@ -72,11 +79,11 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="plugins/common/common.min.js"></script>
-    <script src="js/custom.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/gleek.js"></script>
-    <script src="js/styleSwitcher.js"></script>
+    <script src="app/recursos/plugins/common/common.min.js"></script>
+    <script src="app/recursos/js/custom.min.js"></script>
+    <script src="app/recursos/js/settings.js"></script>
+    <script src="app/recursos/js/gleek.js"></script>
+    <script src="app/recursos/js/styleSwitcher.js"></script>
 </body>
 </html>
 

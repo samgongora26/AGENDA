@@ -29,7 +29,7 @@
                                     <div class="d-inline-block">
 
                                         <?php
-
+                                        $promedio = 0;
                                         $parciales = mysqli_query($link, "SELECT * from parciales WHERE `parciales`.`id_usuario` = $id_user");
                                         $total_parciales = mysqli_num_rows($parciales); //numero de parciales
                                         while($row_parciales = mysqli_fetch_array($parciales)){
@@ -62,7 +62,7 @@
 
                                         <?php
                                         
-                                            $result = mysqli_query($link, "select * from asignaturas");
+                                            $result = mysqli_query($link, "select * from asignaturas where id_usuario = $id_user");
                                             $total = mysqli_num_rows($result);
                                             echo '<p class="text-white mb-0"> Asignaturas : '.$total.'</p>';
                                             
@@ -83,7 +83,7 @@
                                         <h2 class="text-white">Maestros</h2>
                                         <?php
                                         
-                                            $result = mysqli_query($link, "select * from maestros");
+                                            $result = mysqli_query($link, "select * from maestros where id_usuario = $id_user");
                                             $total = mysqli_num_rows($result);
                                             echo '<p class="text-white mb-0"> Maestros : '.$total.'</p>';
                                             

@@ -52,9 +52,9 @@
                                     </div>
                                     <button class="btn login-form__btn submit w-100">Ingresar</button>
                                 </form>
-                                <p class="mt-5 login-form__footer">¿No tienes una cuenta? <a href="page-register.html" class="text-primary">Registrate </a>ahora</p>
+                                <p class="mt-5 login-form__footer">¿No tienes una cuenta? <a href="registro.php" class="text-primary">Registrate </a>ahora</p>
                                 
-                                <button class="btn btn-danger btn sweet-auto">Sweet Auto Close</button>
+                                
                                     
                             </div>
                         </div>
